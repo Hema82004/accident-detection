@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="https://cdn.glitch.global/c45c0a85-a78f-413a-8633-615939343dbd/883a6da2-3ae3-4f1f-8207-e3de74209841.image.png?v=1719759238451" alt="Hospital Plus Logo" class="logo">
+            <h1>Accident Detection Dashboard</h1>
+        </header>
+        
+        <section id="profile-section">
+            <h2>Profile Information</h2>
+            <form id="profile-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+                
+                <label for="contact">Contact Number:</label>
+                <input type="text" id="contact" required>
+                
+                <label for="location">Location:</label>
+                <input type="text" id="location" required>
+                
+                <label for="user-type">User Type:</label>
+                <select id="user-type" required>
+                    <option value="citizen">Citizen</option>
+                    <option value="hospital">Hospital</option>
+                    <option value="police">Police</option>
+                </select>
+                
+                <button type="submit">Update Profile</button>
+            </form>
+        </section>
+        
+        <section id="accident-log">
+            <h2>Detected Accidents Log</h2>
+            <ul>
+                <li>Accident at 5th Avenue, NY - Two vehicles involved</li>
+                <li>Accident at Main Street, LA - Pedestrian hit by a car</li>
+                <li>Accident at Broadway, NY - Single motorcycle crash</li>
+            </ul>
+        </section>
+    </div>
+    <script>
+        // Load current user data
+        const currentUserEmail = localStorage.getItem('currentUser');
+        const currentUser = JSON.parse(localStorage.getItem(currentUserEmail));
+
+        // Populate the form with current user data
+        document.getElementById('name').value = currentUser.name;
+        document.getElementById('contact').value = currentUser.contact;
+        document.getElementById('location').value = currentUser.location;
+        document.getElementById('user-type').value = currentUser.userType;
+
+        // Handle profile update
+        document.getElementById('profile-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const contact = document.getElementById('contact').value;
+            const location = document.getElementById('location').value;
+            const userType = document.getElementById('user-type').value;
+
+            // Update user data in localStorage
+            const updatedUser = { ...currentUser, name, contact, location, userType };
+            localStorage.setItem(currentUserEmail, JSON.stringify(updatedUser));
+
+            alert('Profile updated successfully!');
+        });
+    </script>
+</body>
+</html>
+
+                
+        
+
