@@ -1,0 +1,16 @@
+{
+  "name": "accident-detection-dashboard",
+  "version": "1.0.0",
+  "description": "An accident detection dashboard",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "engines": {
+    "node": "14.x"
+  },
+  "license": "MIT"
+}
